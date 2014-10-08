@@ -1,0 +1,27 @@
+{
+    "name": "jeremymarc/akamai-php-client",
+    "description": "Akamai PHP Client",
+    "type": "library",
+    "homepage": "http://akamai.com",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "kriswallsmith/buzz": "*"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "phpunit/phpunit": "3.7.*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Akamai": "src/" }
+    },
+    "authors": [
+        {
+            "name": "Jeremy Marc",
+            "email": "jeremy@sweetlabs.com"
+        }
+    ]
+}
