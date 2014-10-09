@@ -40,7 +40,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testCheckQueueLength()
     {
         $response = self::$client->checkQueueLength();
-        var_dump($response);
 
         $this->assertEquals($response->httpStatus, 200);
         $this->assertEquals($response->detail, 'The queue may take a minute to reflect new or removed requests.');
@@ -58,10 +57,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testPostPurgeRequest()
     {
-        $urls = ['objects' => ['/qa/path/1', '/qa/path/2']];
+        $urls = ['objects' => ['http://cdn-staging.pokki.com/qa/test/*.exe']];
         $response = self::$client->purgeRequest($urls);
-        var_dump($response);
-
-        $this->assertEquals($response->httpStatus, 200);
+        $this->assertEquals($response->httpStatus, 201);
+        $this->assertEquals($response->detail, 'Request accepted.');
     }
 }
