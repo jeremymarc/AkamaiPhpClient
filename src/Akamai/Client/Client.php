@@ -104,6 +104,7 @@ class Client
         $nonce = uniqid();
         $authToken = $this->makeAuthHeader($request, $timestamp, $nonce);
         $request->addHeader("Authorization: " . $authToken);
+        $request->addHeader("Expect:");
 
         // $listener = new BasicAuthListener($this->username, $this->password);
         // $listener->preSend($request);
