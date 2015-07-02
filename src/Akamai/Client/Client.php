@@ -4,7 +4,7 @@ namespace Akamai\Client;
 
 use Akamai\Client\Exception\HttpException;
 use Akamai\Client\Exception\LogicException;
-use Buzz\Client\ClientInterface;
+use Buzz\Browser;
 use Buzz\Message\Request;
 use Buzz\Message\Response;
 use Buzz\Listener\BasicAuthListener;
@@ -12,9 +12,9 @@ use Buzz\Listener\BasicAuthListener;
 class Client
 {
     /**
-     * @var ClientInterface
+     * @var Browser
      */
-    protected $httpClient;
+    protected $browser;
 
     /**
      * @var string
@@ -41,9 +41,9 @@ class Client
      */
     protected $headersToSign;
 
-    public function __construct(ClientInterface $httpClient, $clientToken, $clientSecret, $accessToken, $baseUrl)
+    public function __construct(Browser $browser, $clientToken, $clientSecret, $accessToken, $baseUrl)
     {
-        $this->httpClient = $httpClient;
+        $this->browser = $browser;
         $this->clientToken = $clientToken;
         $this->clientSecret = $clientSecret;
         $this->accessToken = $accessToken;
@@ -108,7 +108,7 @@ class Client
         // $listener = new BasicAuthListener($this->username, $this->password);
         // $listener->preSend($request);
 
-        $this->httpClient->send($request, $response);
+        $this->browser->send($request, $response);
 
         return $this->getResult($response);
     }
