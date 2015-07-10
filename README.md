@@ -8,9 +8,9 @@ composer install jeremymarc/akamai-php-client
 ## Usage
 ```php
 
-$curl = new Curl;
+$browser = new \Buzz\Browser(new \Buzz\Client\Curl());
 
-$client = new Client($curl, $clientToken, $clientSecret, $accessToken, $baseUrl);
+$client = new Client($browser, $clientToken, $clientSecret, $accessToken, $baseUrl);
 $resp = $client->checkQueueLength();
 echo $resp->queueLength;
 ```
